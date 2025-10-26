@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 02:18:02 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/10/26 04:41:44 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/10/26 05:36:35 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*ft_joincontent(t_list *lst)
 	strj = (char *)malloc(sizeof(char) * (lstsize * BUFFER_SIZE + 1));
 	if (!strj)
 		return (NULL);
-	while (i < BUFFER_SIZE && tmp_list)
+	while (tmp_list)
 	{
 		strj[i] = tmp_list->content[i % BUFFER_SIZE];
 		i++;

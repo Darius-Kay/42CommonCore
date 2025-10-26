@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 02:13:28 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/10/26 04:34:47 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/10/26 05:25:42 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void	ft_lstfree(t_list *lst);
 size_t	ft_lstsize(t_list *lst);
 char	*ft_joincontent(t_list *lst);
 void	ft_readfd(t_list *lst, int fd, int line_nbr);
-
+char	*get_next_line(int fd);
 #endif
