@@ -6,56 +6,67 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 09:41:08 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/10/27 14:23:19 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/10/28 06:11:36 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_substr(char *s, int start, size_t len)
+static char	*ft_substr(char *s)
 {
-	size_t	i;
-	size_t	s_len;
+	int		i;
+	int		j;
 	char	*sub;
 
-	i = 0;
 	if (!s || !s[0])
 		return (NULL);
-	s_len = ft_slen(s);
-	if (len > s_len - start || len == 0)
-		len = s_len - start;
-	sub = (char *)malloc(sizeof(char) * (len + 1));
+	j = 0;
+	i = ft_strchr(s);
+	if (s[i] == '\n')
+		i++;
+	else if (i == 0 && s[0] != '\n')
+		i = ft_slen(s);
+	sub = (char *)malloc(sizeof(char) * (i + 1));
 	if (!sub)
 		return (NULL);
-	while (i + start < len)
+	while (j < i)
 	{
-		sub[i] = s[start + i];
-		i++;
+		sub[j] = s[j];
+		j++;
 	}
-	sub[i] = '\0';
+	sub[j] = '\0';
 	return (sub);
 }
 
-static char	*ft_trimmer(char *str)
+//a refaire abb\naa
+static char	*ft_trimmer(char *s)
 {
 	int		i;
+	int		j;
 	char	*tmp_buf;
 
-	i = 0;
-	if (str[0] == '\0')
+	if (!s || !s[0])
 	{
-		free(str);
+		free(s);
 		return (NULL);
 	}
-	while (str[i] && str[i] != '\n')
+	i = ft_strchr(s);
+	j = 0;
+	if (s[i] == '\n')
 		i++;
-	tmp_buf = ft_substr(str, i + 1, -1);
+	else if (i == 0 && s[0] != '\n')
+		i = ft_slen(s);
+	tmp_buf = (char *)malloc(sizeof(char) * (ft_slen(s) - i + 1));
 	if (!tmp_buf)
-	{
-		free(str);
 		return (NULL);
+	while (s[i])
+	{
+		tmp_buf[j] = s[i];
+		i++;
+		j++;
 	}
-	free(str);
+	free(s);
+	tmp_buf[j] = '\0';
 	return (tmp_buf);
 }
 
@@ -71,10 +82,10 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	while (!ft_strchr(str) && len != 0)
+	while (ft_strchr(str) == 0 && len != 0)
 	{
 		len = read(fd, buf, BUFFER_SIZE);
-		if (len < 0)
+		if (len == -1)
 		{
 			free(buf);
 			return (NULL);
@@ -83,7 +94,7 @@ char	*get_next_line(int fd)
 		str = ft_strjoin(str, buf);
 	}
 	free(buf);
-	buf = ft_substr(str, 0, ft_strchr(str));
+	buf = ft_substr(str);
 	str = ft_trimmer(str);
 	return (buf);
 }

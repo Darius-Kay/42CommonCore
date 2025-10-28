@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 06:05:05 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/10/27 13:43:59 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/10/28 06:10:09 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int ac, char **av)
 	int		i;
 
 	i = 0;
-	fd = open("1char.txt", O_RDONLY);
-	while (i < 2)
+	fd = open("caca.txt", O_RDONLY);
+	while (i < 5)
 	{
 		str = get_next_line(fd);
 		printf("%s", str);

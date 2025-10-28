@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 08:45:28 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/10/27 14:12:51 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/10/28 06:05:54 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_slen(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 		i++;
@@ -47,8 +49,6 @@ char	*ft_joinedcpy(char *str, char *buf)
 
 	i = 0;
 	j = 0;
-	if (!buf || !str)
-		return (NULL);
 	tmp_str = (char *)malloc(sizeof(char) * (ft_slen(str) + ft_slen(buf) + 1));
 	if (!tmp_str)
 		return (NULL);
@@ -70,8 +70,6 @@ char	*ft_strjoin(char *str, char *buf)
 {
 	char	*tmp_str;
 
-	if (!buf)
-		return (NULL);
 	if (!str)
 	{
 		str = (char *)malloc(sizeof(char) * 1);
@@ -79,6 +77,8 @@ char	*ft_strjoin(char *str, char *buf)
 			return (NULL);
 		str[0] = '\0';
 	}
+	if (!buf || !str)
+		return (NULL);
 	tmp_str = ft_joinedcpy(str, buf);
 	if (!tmp_str)
 		return (NULL);
