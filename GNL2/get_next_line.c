@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 09:41:08 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/10/28 10:05:47 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/10/28 09:51:13 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static char	*ft_substr(char *s)
 	return (sub);
 }
 
+//a refaire caca\nm
 static char	*ft_trimmer(char *s)
 {
 	int		i;
@@ -67,42 +68,31 @@ static char	*ft_trimmer(char *s)
 	return (tmp_buf);
 }
 
-static void	ft_freeall(char **str, char *buf)
-{
-	if (buf)
-		free(buf);
-	if (str)
-	{
-		free(*str);
-		*str = NULL;
-	}
-}
-
 char	*get_next_line(int fd)
 {
-	static char	*str = NULL;
+	static char	*str[1024];
 	char		*buf;
 	int			len;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
 	len = 1;
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	while (ft_strchr(str) == 0 && len > 0)
+	while (ft_strchr(str[fd]) == 0 && len > 0)
 	{
 		len = read(fd, buf, BUFFER_SIZE);
 		if (len < 0)
 		{
-			ft_freeall(&str, buf);
+			free(buf);
 			return (NULL);
 		}
 		buf[len] = '\0';
-		str = ft_strjoin(str, buf);
+		str[fd] = ft_strjoin(str[fd], buf);
 	}
 	free(buf);
-	buf = ft_substr(str);
-	str = ft_trimmer(str);
+	buf = ft_substr(str[fd]);
+	str[fd] = ft_trimmer(str[fd]);
 	return (buf);
 }
