@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 09:41:08 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/10/28 06:11:36 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/10/28 08:19:03 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*ft_substr(char *s)
 	int		j;
 	char	*sub;
 
-	if (!s || !s[0])
+	if (!s || s[0] == '\0')
 		return (NULL);
 	j = 0;
 	i = ft_strchr(s);
@@ -38,7 +38,7 @@ static char	*ft_substr(char *s)
 	return (sub);
 }
 
-//a refaire abb\naa
+//a refaire caca\nm
 static char	*ft_trimmer(char *s)
 {
 	int		i;
@@ -50,19 +50,17 @@ static char	*ft_trimmer(char *s)
 		free(s);
 		return (NULL);
 	}
-	i = ft_strchr(s);
+	i = 0;
 	j = 0;
-	if (s[i] == '\n')
+	while (s[i] != '\n' && s[i])
 		i++;
-	else if (i == 0 && s[0] != '\n')
-		i = ft_slen(s);
 	tmp_buf = (char *)malloc(sizeof(char) * (ft_slen(s) - i + 1));
 	if (!tmp_buf)
 		return (NULL);
 	while (s[i])
 	{
-		tmp_buf[j] = s[i];
 		i++;
+		tmp_buf[j] = s[i];
 		j++;
 	}
 	free(s);
