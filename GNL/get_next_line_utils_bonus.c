@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 08:45:28 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/10/28 09:48:14 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:20:39 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,12 @@ char	*ft_strjoin(char *str, char *buf)
 			return (NULL);
 		str[0] = '\0';
 	}
-	if (!buf || !str)
+	if (!buf)
+	{
+		free(str);
 		return (NULL);
+	}
 	tmp_str = ft_joinedcpy(str, buf);
-	if (!tmp_str)
-		return (NULL);
-	free(str);
+	ft_freeall(&str, NULL);
 	return (tmp_str);
 }

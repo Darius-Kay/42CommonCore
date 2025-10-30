@@ -77,11 +77,12 @@ char	*ft_strjoin(char *str, char *buf)
 			return (NULL);
 		str[0] = '\0';
 	}
-	if (!buf || !str)
+	if (!buf)
+	{
+		free(str);
 		return (NULL);
+	}
 	tmp_str = ft_joinedcpy(str, buf);
-	if (!tmp_str)
-		return (NULL);
-	free(str);
+	ft_freeall(&str, NULL);
 	return (tmp_str);
 }

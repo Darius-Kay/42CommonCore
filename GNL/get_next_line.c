@@ -12,6 +12,17 @@
 
 #include "get_next_line.h"
 
+void	ft_freeall(char **str, char *buf)
+{
+	if (buf)
+		free(buf);
+	if (*str)
+	{
+		free(*str);
+		*str = NULL;
+	}
+}
+
 static char	*ft_substr(char *s)
 {
 	int		i;
@@ -44,9 +55,9 @@ static char	*ft_trimmer(char *s)
 	int		j;
 	char	*tmp_buf;
 
-	if (!s || !s[0])
+	if (!s || s[0] == '\0')
 	{
-		free(s);
+		ft_freeall(&s, NULL);
 		return (NULL);
 	}
 	i = 0;
@@ -55,27 +66,15 @@ static char	*ft_trimmer(char *s)
 		i++;
 	tmp_buf = (char *)malloc(sizeof(char) * (ft_slen(s) - i + 1));
 	if (!tmp_buf)
-		return (NULL);
-	while (s[i])
 	{
-		i++;
-		tmp_buf[j] = s[i];
-		j++;
+		ft_freeall(&s, NULL);
+		return (NULL);
 	}
-	free(s);
+	while (s[i++])
+		tmp_buf[j++] = s[i];
+	ft_freeall(&s, NULL);
 	tmp_buf[j] = '\0';
 	return (tmp_buf);
-}
-
-static void	ft_freeall(char **str, char *buf)
-{
-	if (buf)
-		free(buf);
-	if (str)
-	{
-		free(*str);
-		*str = NULL;
-	}
 }
 
 char	*get_next_line(int fd)
@@ -84,7 +83,7 @@ char	*get_next_line(int fd)
 	char		*buf;
 	int			len;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
 	len = 1;
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));

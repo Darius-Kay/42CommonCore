@@ -23,4 +23,5 @@ int		ft_slen(char *str);
 char	*ft_joinedcpy(char *str, char *buf);
 char	*ft_strjoin(char *str, char *buf);
 char	*get_next_line(int fd);
+void	ft_freeall(char **str, char *buf);
 #endif

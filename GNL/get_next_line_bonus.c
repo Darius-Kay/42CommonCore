@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 09:41:08 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/10/28 09:51:13 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:19:09 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
+
+void	ft_freeall(char **str, char *buf)
+{
+	if (buf)
+		free(buf);
+	if (*str)
+	{
+		free(*str);
+		*str = NULL;
+	}
+}
 
 static char	*ft_substr(char *s)
 {
@@ -38,16 +49,15 @@ static char	*ft_substr(char *s)
 	return (sub);
 }
 
-//a refaire caca\nm
 static char	*ft_trimmer(char *s)
 {
 	int		i;
 	int		j;
 	char	*tmp_buf;
 
-	if (!s || !s[0])
+	if (!s || s[0] == '\0')
 	{
-		free(s);
+		ft_freeall(&s, NULL);
 		return (NULL);
 	}
 	i = 0;
@@ -56,14 +66,13 @@ static char	*ft_trimmer(char *s)
 		i++;
 	tmp_buf = (char *)malloc(sizeof(char) * (ft_slen(s) - i + 1));
 	if (!tmp_buf)
-		return (NULL);
-	while (s[i])
 	{
-		i++;
-		tmp_buf[j] = s[i];
-		j++;
+		ft_freeall(&s, NULL);
+		return (NULL);
 	}
-	free(s);
+	while (s[i++])
+		tmp_buf[j++] = s[i];
+	ft_freeall(&s, NULL);
 	tmp_buf[j] = '\0';
 	return (tmp_buf);
 }
@@ -74,7 +83,7 @@ char	*get_next_line(int fd)
 	char		*buf;
 	int			len;
 
-	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
 	len = 1;
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -85,7 +94,7 @@ char	*get_next_line(int fd)
 		len = read(fd, buf, BUFFER_SIZE);
 		if (len < 0)
 		{
-			free(buf);
+			ft_freeall(&str[fd], buf);
 			return (NULL);
 		}
 		buf[len] = '\0';
