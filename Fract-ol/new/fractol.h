@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:35:32 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/08 02:35:32 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/11 00:32:34 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_mlx
 	mlx_window_create_info	info;
 	int						*keytab;
 	bool					update;
-	bool					calloc_failed;
+	bool					error;
 }	t_mlx;
 
 void	key_up(int key, void *param);

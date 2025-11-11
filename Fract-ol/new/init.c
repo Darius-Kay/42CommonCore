@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:48:44 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/08 02:48:44 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/11 00:47:15 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,19 @@ t_mlx	ft_init_tmlx(void)
 	t_mlx	mlx;
 
 	mlx.mlx = mlx_init();
+	if (mlx.mlx == MLX_NULL_HANDLE)
+	{
+		mlx.error = true;
+		return (mlx);
+	}
 	mlx.info = ft_init_info();
 	mlx.win = mlx_new_window(mlx.mlx, &(mlx.info));
 	mlx.coord = ft_init_coord();
 	mlx.img = mlx_new_image(mlx.mlx, mlx.info.width, mlx.info.width);
 	mlx.update = true;
-	mlx.calloc_failed = false;
+	mlx.error = false;
 	mlx.keytab = (int *)ft_calloc(255, sizeof(int));
 	if (!mlx.keytab)
-		mlx.calloc_failed = true;
+		mlx.error = true;
 	return (mlx);
 }

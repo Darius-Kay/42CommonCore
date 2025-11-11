@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 03:58:25 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/08 03:58:25 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/11 00:42:37 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	mendelbrot(t_mlx mlx, double x, double y)
 	mlx_color				mask;
 	mlx_color				color;
 
-	color.rgba = BLUE;
-	mask.rgba = 0x00F0F0F0;
+	color.rgba = BLACK;
+	mask.rgba = 0xF0F0F0F0;
 	while (x < mlx.info.width)
 	{
 		y = 0.0;
