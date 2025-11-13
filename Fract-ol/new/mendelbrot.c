@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 03:58:25 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/11 00:42:37 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:01:04 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ static int	is_in_frac(t_mlx mlx, double c_rx, double c_iy)
 
 void	mendelbrot(t_mlx mlx, double x, double y)
 {
-	int						frac_calc;
-	mlx_color				mask;
-	mlx_color				color;
+	int			frac_calc;
+	mlx_color	mask;
+	mlx_color	outl_color;
 
-	color.rgba = BLACK;
 	mask.rgba = 0xF0F0F0F0;
+	outl_color = mlx.color.outl;
 	while (x < mlx.info.width)
 	{
 		y = 0.0;
@@ -51,10 +51,10 @@ void	mendelbrot(t_mlx mlx, double x, double y)
 			frac_calc = is_in_frac(mlx, (x / (mlx.coord.zoom) + mlx.coord.offx),
 					-(y / (mlx.coord.zoom) + (mlx.coord.offy)));
 			if (frac_calc == mlx.coord.imax)
-				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, color);
+				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, mlx.color.black);
 			else
 				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y,
-					(mlx_color)(frac_calc * mask.rgba + color.rgba));
+					(mlx_color)(frac_calc * mask.rgba & outl_color.rgba));
 			y = y + 1.0;
 		}
 		x = x + 1.0;

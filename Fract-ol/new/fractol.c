@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:43:26 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/11 00:34:08 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:00:58 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@
 static void	update_paint(void *param)
 {
 	t_mlx		*mlx;
-	mlx_color	black;
+	mlx_color	rando;
 
 	mlx = (t_mlx *)param;
-	black.rgba = 0xFFFFFF00;
 	if (mlx->update == true)
 	{
-		mlx_clear_window(mlx->mlx, mlx->win, black);
+		mlx_clear_window(mlx->mlx, mlx->win, mlx->color.black);
 		mendelbrot(*mlx, 0, 0);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	}
