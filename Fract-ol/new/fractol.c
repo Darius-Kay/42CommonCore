@@ -16,7 +16,6 @@
 static void	update_paint(void *param)
 {
 	t_mlx		*mlx;
-	mlx_color	rando;
 
 	mlx = (t_mlx *)param;
 	if (mlx->update == true)

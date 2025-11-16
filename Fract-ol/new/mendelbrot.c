@@ -41,7 +41,7 @@ void	mendelbrot(t_mlx mlx, double x, double y)
 	mlx_color	mask;
 	mlx_color	outl_color;
 
-	mask.rgba = 0xF0F0F0F0;
+	mask.rgba = 0xF0F0F0FF;
 	outl_color = mlx.color.outl;
 	while (x < mlx.info.width)
 	{
@@ -52,9 +52,11 @@ void	mendelbrot(t_mlx mlx, double x, double y)
 					-(y / (mlx.coord.zoom) + (mlx.coord.offy)));
 			if (frac_calc == mlx.coord.imax)
 				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, mlx.color.black);
+			else if (frac_calc <= 20)
+				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, mlx.color.white);
 			else
 				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y,
-					(mlx_color)(frac_calc * mask.rgba & outl_color.rgba));
+					(mlx_color)(frac_calc * (outl_color.rgba & mask.rgba)));
 			y = y + 1.0;
 		}
 		x = x + 1.0;
