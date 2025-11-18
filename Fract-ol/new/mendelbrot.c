@@ -12,30 +12,34 @@
 
 #include "fractol.h"
 
-static int	is_in_frac(t_mlx mlx, double c_rx, double c_iy)
+static int	is_in_frac(t_mlx mlx, double c_rx, double c_iy, double tmp)
 {
-	double	tmp;
 	double	z_r;
 	double	z_i;
-	double	z_calc;
+	double	z_r2;
+	double	z_i2;
 	int		i;
 
 	z_r = 0.0;
 	z_i = 0.0;
-	z_calc = z_r * z_r + z_i * z_i;
+	z_r2 = 0.0;
+	z_i2 = 0.0;
 	i = 0;
-	while ((z_calc < 4) && (i < mlx.coord.imax))
+	while (i < mlx.coord.imax)
 	{
+		z_r2 = z_r * z_r;
+		z_i2 = z_i * z_i;
+		if (z_r2 + z_i2 >= 4.0)
+			break ;
 		tmp = z_r;
-		z_r = (z_r * z_r) - (z_i * z_i) + c_rx;
-		z_i = (2 * z_i * tmp) + c_iy;
-		z_calc = z_r * z_r + z_i * z_i;
-		i = i + 1;
+		z_r = (z_r2 - z_i2 + c_rx);
+		z_i = (2.0 * tmp * z_i + c_iy);
+		i++;
 	}
 	return (i);
 }
 
-void	mendelbrot(t_mlx mlx, double x, double y)
+void	mendelbrot(t_mlx *pmlx, t_mlx mlx, double x, double y)
 {
 	int			frac_calc;
 	mlx_color	mask;
@@ -49,7 +53,7 @@ void	mendelbrot(t_mlx mlx, double x, double y)
 		while (y < mlx.info.height)
 		{
 			frac_calc = is_in_frac(mlx, (x / (mlx.coord.zoom) + mlx.coord.offx),
-					-(y / (mlx.coord.zoom) + (mlx.coord.offy)));
+					-(y / (mlx.coord.zoom) + (mlx.coord.offy)), 0.0);
 			if (frac_calc == mlx.coord.imax)
 				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, mlx.color.black);
 			else if (frac_calc <= 20)
@@ -61,5 +65,5 @@ void	mendelbrot(t_mlx mlx, double x, double y)
 		}
 		x = x + 1.0;
 	}
-	mlx.update = false;
+	pmlx->update = false;
 }

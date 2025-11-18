@@ -15,6 +15,7 @@
 # include "../MacroLibX/includes/mlx.h"
 # include "../MacroLibX/includes/mlx_extended.h"
 # include <stdlib.h>
+# include <math.h>
 # define BLACK 0x000000FF
 # define WHITE 0xFFFFFFFF
 # define RED 0xFF0000FF
@@ -61,7 +62,7 @@ typedef struct s_mlx
 void		key_up(int key, void *param);
 void		key_down(int key, void *param);
 t_mlx		ft_init_tmlx(void);
-void		mendelbrot(t_mlx mlx, double x, double y);
+void		mendelbrot(t_mlx *pmlx, t_mlx mlx, double x, double y);
 void		update_precision(void *param);
 void		update_moving(void *param);
 void		ft_zoom(int button, void *param);

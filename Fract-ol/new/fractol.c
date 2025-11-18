@@ -21,7 +21,7 @@ static void	update_paint(void *param)
 	if (mlx->update == true)
 	{
 		mlx_clear_window(mlx->mlx, mlx->win, mlx->color.black);
-		mendelbrot(*mlx, 0, 0);
+		mendelbrot(mlx, *mlx, 0, 0);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	}
 }

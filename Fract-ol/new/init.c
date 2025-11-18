@@ -36,7 +36,7 @@ static mlx_window_create_info	ft_init_info(void)
 	info.width = 500;
 	info.is_fullscreen = false;
 	info.is_resizable = false;
-	info.title = "Fractroll";
+	info.title = "Supra-Fractroll ©";
 	info.render_target = 0;
 	return (info);
 }
