@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 20:35:22 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/12 18:04:27 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/20 08:11:12 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define KEY_ZERO        39
 # define KEY_ONE        30
 # define KEY_TWO        31
-# define KEY_TREE        32
+# define KEY_THREE        32
 # define KEY_FOUR        33
 # define KEY_FIVE        34
 # define KEY_SIX        35

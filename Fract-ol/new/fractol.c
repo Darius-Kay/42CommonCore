@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:43:26 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/20 02:17:22 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/20 09:23:47 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	update_paint(void *param)
 	if (mlx->update == true)
 	{
 		mlx_clear_window(mlx->mlx, mlx->win, mlx->color.black);
-		mendelbrot(mlx, *mlx, 0, 0);
+		mlx->fr(mlx, *mlx, 0, 0);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	}
 }
@@ -42,8 +42,10 @@ static void	update_key(void *param)
 	mlx = (t_mlx *)param;
 	if (mlx->keytab[KEY_ESC])
 		mlx_loop_end(mlx->mlx);
+	fractol_choice(mlx);
 	update_moving(param);
 	update_precision(param);
+	update_color(param);
 }
 
 int	main(void)

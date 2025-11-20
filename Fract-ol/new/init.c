@@ -6,11 +6,21 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:48:44 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/12 17:55:23 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/20 09:14:31 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static t_julia	ft_init_julia(void)
+{
+	t_julia	julia;
+
+	julia.julia_x = -0.7;
+	julia.julia_y = 0.27;
+	julia.oldzr = 0.0;
+	return (julia);
+}
 
 static t_color	ft_init_color(void)
 {
@@ -25,6 +35,7 @@ static t_color	ft_init_color(void)
 	color.cyan.rgba = BLUE + GREEN;
 	color.magenta.rgba = BLUE + RED;
 	color.outl.rgba = WHITE;
+	color.rainbow.rgba = 0x000000FF;
 	return (color);
 }
 
@@ -68,7 +79,10 @@ t_mlx	ft_init_tmlx(void)
 	mlx.img = mlx_new_image(mlx.mlx, mlx.info.width, mlx.info.width);
 	mlx.color = ft_init_color();
 	mlx.update = true;
+	mlx.is_rainbow = false;
 	mlx.error = false;
+	mlx.julia = ft_init_julia();
+	mlx.fr = mendelbrot;
 	mlx.keytab = (int *)ft_calloc(255, sizeof(int));
 	if (!mlx.keytab)
 		mlx.error = true;

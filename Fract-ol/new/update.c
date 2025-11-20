@@ -6,12 +6,63 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:43:33 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/20 03:03:42 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/20 09:21:45 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "keycode.h"
 #include "fractol.h"
+
+void	fractol_choice(void	*param)
+{
+	t_mlx	*mlx;
+
+	mlx = (t_mlx *)param;
+	if (mlx->keytab[KEY_M])
+		mlx->fr = mendelbrot;
+	if (mlx->keytab[KEY_J])
+		mlx->fr = julia;
+	if (mlx->keytab[KEY_ONE])
+	{
+		mlx->julia.julia_x = -0.7;
+		mlx->julia.julia_y = 0.27;
+	}
+	if (mlx->keytab[KEY_TWO])
+	{
+		mlx->julia.julia_x = -0.8;
+		mlx->julia.julia_y = 0.1561;
+	}
+	if (mlx->keytab[KEY_THREE])
+	{
+		mlx->julia.julia_x = 0.355534;
+		mlx->julia.julia_y = -0.337292;
+	}
+}
+
+void	update_color(void *param)
+{
+	t_mlx		*mlx;
+	mlx_color	old_outl;
+
+	mlx = (t_mlx *)param;
+	old_outl = mlx->color.outl;
+	if (mlx->keytab[KEY_1])
+		mlx->color.outl.rgba = RED;
+	if (mlx->keytab[KEY_2])
+		mlx->color.outl.rgba = YELLOW;
+	if (mlx->keytab[KEY_3])
+		mlx->color.outl.rgba = GREEN;
+	if (mlx->keytab[KEY_4])
+		mlx->color.outl.rgba = CYAN;
+	if (mlx->keytab[KEY_5])
+		mlx->color.outl.rgba = BLUE;
+	if (mlx->keytab[KEY_6])
+		mlx->color.outl.rgba = MAGENTA;
+	if (mlx->keytab[KEY_7])
+		mlx->color.outl.rgba = WHITE;
+	if (old_outl.rgba != mlx->color.outl.rgba)
+		mlx->update = true;
+}
 
 void	update_moving(void *param)
 {
@@ -37,27 +88,16 @@ void	update_moving(void *param)
 void	update_precision(void *param)
 {
 	t_mlx	*mlx;
+	int		old_imax;
 
 	mlx = (t_mlx *)param;
+	old_imax = mlx->coord.imax;
 	if (mlx->keytab[KEY_E])
 		mlx->coord.imax = mlx->coord.imax + 10;
 	if (mlx->keytab[KEY_R])
 		mlx->coord.imax = mlx->coord.imax - 10 * (mlx->coord.imax > 0);
-	if (mlx->keytab[KEY_1])
-		mlx->color.outl.rgba = RED;
-	if (mlx->keytab[KEY_2])
-		mlx->color.outl.rgba = YELLOW;
-	if (mlx->keytab[KEY_3])
-		mlx->color.outl.rgba = GREEN;
-	if (mlx->keytab[KEY_4])
-		mlx->color.outl.rgba = CYAN;
-	if (mlx->keytab[KEY_5])
-		mlx->color.outl.rgba = BLUE;
-	if (mlx->keytab[KEY_6])
-		mlx->color.outl.rgba = MAGENTA;
-	if (mlx->keytab[KEY_7])
-		mlx->color.outl.rgba = WHITE;
-	mlx->update = true;
+	if (old_imax != mlx->coord.imax)
+		mlx->update = true;
 }
 
 void	ft_zoom(int button, void *param)

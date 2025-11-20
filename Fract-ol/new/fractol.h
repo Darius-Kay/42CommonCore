@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:35:32 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/13 20:59:17 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/20 09:23:51 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_color
 	mlx_color	cyan;
 	mlx_color	magenta;
 	mlx_color	outl;
+	mlx_color	rainbow;
 }	t_color;
 
 typedef struct s_coord
@@ -46,6 +47,13 @@ typedef struct s_coord
 	int			imax;
 }	t_coord;
 
+typedef struct s_julia
+{
+	double	julia_x;
+	double	julia_y;
+	double	oldzr;
+}	t_julia;
+
 typedef struct s_mlx
 {
 	mlx_context				mlx;
@@ -53,10 +61,13 @@ typedef struct s_mlx
 	mlx_image				img;
 	t_coord					coord;
 	t_color					color;
+	t_julia					julia;
 	mlx_window_create_info	info;
 	int						*keytab;
 	bool					update;
+	bool					is_rainbow;
 	bool					error;
+	void					(*fr)(struct s_mlx *, struct s_mlx, double, double);
 }	t_mlx;
 
 void		key_up(int key, void *param);
@@ -68,4 +79,7 @@ void		update_moving(void *param);
 void		ft_zoom(int button, void *param);
 void		*ft_calloc(size_t nmemb, size_t size);
 void		ft_cleaning_mlx(t_mlx *mlx);
+void		julia(t_mlx *pmlx, t_mlx mlx, double x, double y);
+void		fractol_choice(void	*param);
+void		update_color(void *param);
 #endif
