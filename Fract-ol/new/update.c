@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:43:33 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/13 21:00:54 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/20 03:03:42 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,27 +63,28 @@ void	update_precision(void *param)
 void	ft_zoom(int button, void *param)
 {
 	t_mlx	*mlx;
-	double	half_height;
-	double	half_width;
+	int		mouse_x;
+	int		mouse_y;
+	double	zoom_factor;
 
 	mlx = (t_mlx *)param;
-	half_height = (double)(((double)mlx->info.height) / 2.0);
-	half_width = (double)(((double)mlx->info.width) / 2.0);
+	mlx_mouse_get_pos(mlx->mlx, &mouse_x, &mouse_y);
+	zoom_factor = 1.5;
 	if (button == 1)
 	{
-		mlx->coord.offx = (half_width / mlx->coord.zoom + mlx->coord.offx)
-			- (half_width / (mlx->coord.zoom * 1.5));
-		mlx->coord.offy = (half_height / mlx->coord.zoom + mlx->coord.offy)
-			- (half_height / (mlx->coord.zoom * 1.5));
-		mlx->coord.zoom = mlx->coord.zoom * 1.5;
+		mlx->coord.offx = ((double)mouse_x / mlx->coord.zoom + mlx->coord.offx)
+			- ((double)mouse_x / (mlx->coord.zoom * zoom_factor));
+		mlx->coord.offy = ((double)mouse_y / mlx->coord.zoom + mlx->coord.offy)
+			- ((double)mouse_y / (mlx->coord.zoom * zoom_factor));
+		mlx->coord.zoom = mlx->coord.zoom * zoom_factor;
 	}
 	if (button == 2)
 	{
-		mlx->coord.offx = (half_width / mlx->coord.zoom + mlx->coord.offx)
-			- (half_width / (mlx->coord.zoom / 1.5));
-		mlx->coord.offy = (half_height / mlx->coord.zoom + mlx->coord.offy)
-			- (half_height / (mlx->coord.zoom / 1.5));
-		mlx->coord.zoom = mlx->coord.zoom / 1.5;
+		mlx->coord.offx = ((double)mouse_x / mlx->coord.zoom + mlx->coord.offx)
+			- ((double)mouse_x / (mlx->coord.zoom / zoom_factor));
+		mlx->coord.offy = ((double)mouse_y / mlx->coord.zoom + mlx->coord.offy)
+			- ((double)mouse_y / (mlx->coord.zoom / zoom_factor));
+		mlx->coord.zoom = mlx->coord.zoom / zoom_factor;
 	}
 	mlx->update = true;
 }
