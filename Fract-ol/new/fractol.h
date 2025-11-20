@@ -67,4 +67,5 @@ void		update_precision(void *param);
 void		update_moving(void *param);
 void		ft_zoom(int button, void *param);
 void		*ft_calloc(size_t nmemb, size_t size);
+void		ft_cleaning_mlx(t_mlx *mlx);
 #endif
