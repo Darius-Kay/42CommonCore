@@ -6,15 +6,15 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 05:36:10 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 08:11:59 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 11:13:08 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	color_switch(t_color *color, t_mlx *mlx)
+void	color_switch(t_color *color, t_mlx *mlx, int choice)
 {
-	if (color->bg.rgba == WHITE)
+	if (choice == 1)
 	{
 		color->bg.rgba = BLACK;
 		color->inside.rgba = WHITE;
@@ -47,31 +47,4 @@ int	nb_of_zoom(double zoom)
 		i++;
 	}
 	return (i);
-}
-
-mlx_color	rainbow_color(t_mlx *mlx)
-{
-	mlx_color	new_color;
-	int			zoom_nb;
-
-	zoom_nb = nb_of_zoom(mlx->coord.zoom) * 5;
-	new_color.rgba = mlx->color.rainbow.rgba;
-	mlx->color.outl = mlx->color.rainbow;
-	if (new_color.r > 0 && new_color.b <= 0)
-	{
-		new_color.r = new_color.r - zoom_nb;
-		new_color.g = new_color.g + zoom_nb;
-	}
-	if (new_color.g > 0 && new_color.r <= 0)
-	{
-		new_color.g = new_color.g - zoom_nb;
-		new_color.b = new_color.b + zoom_nb;
-	}
-	if (new_color.b > 0 && new_color.g <= 0)
-	{
-		new_color.r = new_color.r + zoom_nb;
-		new_color.b = new_color.b - zoom_nb;
-	}
-	mlx->is_rainbow = true;
-	return (new_color);
 }

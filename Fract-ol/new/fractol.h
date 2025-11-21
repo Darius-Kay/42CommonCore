@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:35:32 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 09:01:27 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 13:24:50 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct s_coord
 
 typedef struct s_julia
 {
+	double	av_x;
+	double	av_y;
 	double	julia_x;
 	double	julia_y;
 	double	oldzr;
@@ -81,10 +83,14 @@ typedef struct s_oldjulia
 
 
 void		*ft_calloc(size_t nmemb, size_t size);
+int			ft_strcmp(char *s1, char *s2);
+double		ft_atof(char *str);
 void		key_up(int key, void *param);
 void		key_down(int key, void *param);
 t_mlx		ft_init_tmlx(void);
 void		ft_cleaning_mlx(t_mlx *mlx);
+int			too_much_param(void);
+int			check_first_param(char *av1);
 void		fractol_choice(void	*param);
 void		julia(t_mlx *pmlx, t_mlx mlx, double x, double y);
 void		julia_def_param(t_julia *julia, double x, double y);
@@ -93,7 +99,7 @@ void		update_precision(t_mlx *mlx);
 void		update_moving(t_mlx *mlx);
 void		update_color(t_mlx *mlx);
 void		ft_zoom(int button, void *param);
-void		color_switch(t_color *color, t_mlx *mlx);
+void		color_switch(t_color *color, t_mlx *mlx, int choice);
 mlx_color	rainbow_color(t_mlx *mlx);
 mlx_color	color_change(t_mlx *mlx, int rgba);
 #endif

@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleaning.c                                         :+:      :+:    :+:   */
+/*   check_param.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 05:28:04 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/19 05:28:04 by dakaymak         ###   ########.fr       */
+/*   Created: 2025/11/21 13:20:38 by dakaymak          #+#    #+#             */
+/*   Updated: 2025/11/21 13:40:30 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_cleaning_mlx(t_mlx *mlx)
+int	check_first_param(char *av1)
 {
-	mlx_destroy_image(mlx->mlx, mlx->img);
-	mlx_destroy_window(mlx->mlx, mlx->win);
-	mlx_destroy_context(mlx->mlx);
+	char	*mandelbrot;
+	char	*julia;
+
+	mandelbrot = "mandelbrot";
+	julia = "julia";
+	if ((ft_strcmp(av1, mandelbrot)) && (ft_strcmp(av1, julia)))
+		return (1);
+	else
+		return (0);
 }

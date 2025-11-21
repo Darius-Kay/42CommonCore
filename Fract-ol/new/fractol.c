@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:43:26 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 09:04:34 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 13:24:26 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,12 @@ static void ft_loop(t_mlx mlx)
 	free(mlx.keytab);
 }
 
-int	main(void)
+int	main(int ac, char *av[])
 {
 	t_mlx	mlx;
 
+	if (ac > 4)
+		return (too_much_param());
 	mlx = ft_init_tmlx();
 	if (mlx.error == true)
 	{
@@ -72,6 +74,8 @@ int	main(void)
 			ft_cleaning_mlx(&mlx);
 		return (-1);
 	}
+	if (check_first_param(av[1]))
+		return (too_much_param());
 	ft_loop(mlx);
 	return (0);
 }

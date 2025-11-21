@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keystatus.c                                        :+:      :+:    :+:   */
+/*   fractol_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/08 02:31:50 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 11:12:13 by dakaymak         ###   ########.fr       */
+/*   Created: 2025/11/21 13:18:35 by dakaymak          #+#    #+#             */
+/*   Updated: 2025/11/21 13:40:09 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "keycode.h"
-#include "fractol.h"
-
-void	key_up(int key, void *param)
+int	ft_strcmp(char *s1, char *s2)
 {
-	((t_mlx *)param)->keytab[key] = 0;
-}
-
-void	key_down(int key, void *param)
-{
-	((t_mlx *)param)->keytab[key] = 1;
+	int	i;
+	i = 0;
+	if (!s1 || !s2)
+		return (1);
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (1);
+		i++;
+	}
+	if (s1[i] != s2[i])
+		return (1);
+	return (0);
 }

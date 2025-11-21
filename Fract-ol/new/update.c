@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:43:33 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 08:59:06 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 11:18:08 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void	update_color(t_mlx *mlx)
 		mlx->color.outl = color_change(mlx, MAGENTA);
 	if (mlx->keytab[KEY_7])
 		mlx->color.outl = color_change(mlx, WHITE);
-	// if (mlx->keytab[KEY_8] || mlx->is_rainbow)
-		// mlx->color.rainbow = rainbow_color(mlx);
+	if (mlx->keytab[KEY_8] || mlx->is_rainbow)
+		color_switch(&(mlx->color), mlx, 1);
+	if (mlx->keytab[KEY_9])
+		color_switch(&(mlx->color), mlx, 2);
 	if (old_outl.rgba != mlx->color.outl.rgba)
 		mlx->update = true;
 }
