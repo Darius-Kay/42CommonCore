@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:48:44 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/20 09:14:31 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 07:17:44 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ static t_color	ft_init_color(void)
 	color.cyan.rgba = BLUE + GREEN;
 	color.magenta.rgba = BLUE + RED;
 	color.outl.rgba = WHITE;
-	color.rainbow.rgba = 0x000000FF;
+	color.bg.rgba = WHITE;
+	color.inside.rgba = BLACK;
+	color.rainbow.rgba = 0xFF0000FF;
 	return (color);
 }
 

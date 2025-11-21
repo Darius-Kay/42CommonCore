@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 03:58:25 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/20 08:49:01 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 08:09:31 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	mendelbrot(t_mlx *pmlx, t_mlx mlx, double x, double y)
 			frac_calc = is_in_frac(mlx, (x / (mlx.coord.zoom) + mlx.coord.offx),
 					-(y / (mlx.coord.zoom) + (mlx.coord.offy)), 0.0);
 			if (frac_calc == mlx.coord.imax)
-				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, mlx.color.black);
+				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, mlx.color.inside);
 			else if (frac_calc <= 20)
-				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, mlx.color.white);
+				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, mlx.color.bg);
 			else
 				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y,
 					(mlx_color)(frac_calc * (outl_color.rgba & mask.rgba)));

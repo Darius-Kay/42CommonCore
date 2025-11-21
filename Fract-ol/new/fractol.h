@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:35:32 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/20 09:23:51 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 09:01:27 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_color
 	mlx_color	cyan;
 	mlx_color	magenta;
 	mlx_color	outl;
+	mlx_color	bg;
+	mlx_color	inside;
 	mlx_color	rainbow;
 }	t_color;
 
@@ -70,16 +72,28 @@ typedef struct s_mlx
 	void					(*fr)(struct s_mlx *, struct s_mlx, double, double);
 }	t_mlx;
 
+typedef struct s_oldjulia
+{
+	double	old_x;
+	double	old_y;
+	void	(*old_fr)(t_mlx *, t_mlx, double, double);
+}	t_oldjulia;
+
+
+void		*ft_calloc(size_t nmemb, size_t size);
 void		key_up(int key, void *param);
 void		key_down(int key, void *param);
 t_mlx		ft_init_tmlx(void);
-void		mendelbrot(t_mlx *pmlx, t_mlx mlx, double x, double y);
-void		update_precision(void *param);
-void		update_moving(void *param);
-void		ft_zoom(int button, void *param);
-void		*ft_calloc(size_t nmemb, size_t size);
 void		ft_cleaning_mlx(t_mlx *mlx);
-void		julia(t_mlx *pmlx, t_mlx mlx, double x, double y);
 void		fractol_choice(void	*param);
-void		update_color(void *param);
+void		julia(t_mlx *pmlx, t_mlx mlx, double x, double y);
+void		julia_def_param(t_julia *julia, double x, double y);
+void		mendelbrot(t_mlx *pmlx, t_mlx mlx, double x, double y);
+void		update_precision(t_mlx *mlx);
+void		update_moving(t_mlx *mlx);
+void		update_color(t_mlx *mlx);
+void		ft_zoom(int button, void *param);
+void		color_switch(t_color *color, t_mlx *mlx);
+mlx_color	rainbow_color(t_mlx *mlx);
+mlx_color	color_change(t_mlx *mlx, int rgba);
 #endif

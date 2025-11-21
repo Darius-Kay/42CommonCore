@@ -6,71 +6,43 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:43:33 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/20 09:21:45 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 08:59:06 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "keycode.h"
 #include "fractol.h"
 
-void	fractol_choice(void	*param)
+void	update_color(t_mlx *mlx)
 {
-	t_mlx	*mlx;
-
-	mlx = (t_mlx *)param;
-	if (mlx->keytab[KEY_M])
-		mlx->fr = mendelbrot;
-	if (mlx->keytab[KEY_J])
-		mlx->fr = julia;
-	if (mlx->keytab[KEY_ONE])
-	{
-		mlx->julia.julia_x = -0.7;
-		mlx->julia.julia_y = 0.27;
-	}
-	if (mlx->keytab[KEY_TWO])
-	{
-		mlx->julia.julia_x = -0.8;
-		mlx->julia.julia_y = 0.1561;
-	}
-	if (mlx->keytab[KEY_THREE])
-	{
-		mlx->julia.julia_x = 0.355534;
-		mlx->julia.julia_y = -0.337292;
-	}
-}
-
-void	update_color(void *param)
-{
-	t_mlx		*mlx;
 	mlx_color	old_outl;
 
-	mlx = (t_mlx *)param;
 	old_outl = mlx->color.outl;
 	if (mlx->keytab[KEY_1])
-		mlx->color.outl.rgba = RED;
+		mlx->color.outl = color_change(mlx, RED);
 	if (mlx->keytab[KEY_2])
-		mlx->color.outl.rgba = YELLOW;
+		mlx->color.outl = color_change(mlx, YELLOW);
 	if (mlx->keytab[KEY_3])
-		mlx->color.outl.rgba = GREEN;
+		mlx->color.outl = color_change(mlx, GREEN);
 	if (mlx->keytab[KEY_4])
-		mlx->color.outl.rgba = CYAN;
+		mlx->color.outl = color_change(mlx, CYAN);
 	if (mlx->keytab[KEY_5])
-		mlx->color.outl.rgba = BLUE;
+		mlx->color.outl = color_change(mlx, BLUE);
 	if (mlx->keytab[KEY_6])
-		mlx->color.outl.rgba = MAGENTA;
+		mlx->color.outl = color_change(mlx, MAGENTA);
 	if (mlx->keytab[KEY_7])
-		mlx->color.outl.rgba = WHITE;
+		mlx->color.outl = color_change(mlx, WHITE);
+	// if (mlx->keytab[KEY_8] || mlx->is_rainbow)
+		// mlx->color.rainbow = rainbow_color(mlx);
 	if (old_outl.rgba != mlx->color.outl.rgba)
 		mlx->update = true;
 }
 
-void	update_moving(void *param)
+void	update_moving(t_mlx *mlx)
 {
-	t_mlx	*mlx;
 	double	tmp_x;
 	double	tmp_y;
 
-	mlx = (t_mlx *)param;
 	tmp_x = mlx->coord.offx;
 	tmp_y = mlx->coord.offy;
 	if (mlx->keytab[KEY_W] || mlx->keytab[KEY_UP])
@@ -85,12 +57,10 @@ void	update_moving(void *param)
 		mlx->update = true;
 }
 
-void	update_precision(void *param)
+void	update_precision(t_mlx *mlx)
 {
-	t_mlx	*mlx;
 	int		old_imax;
 
-	mlx = (t_mlx *)param;
 	old_imax = mlx->coord.imax;
 	if (mlx->keytab[KEY_E])
 		mlx->coord.imax = mlx->coord.imax + 10;
