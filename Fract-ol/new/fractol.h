@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:35:32 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 13:24:50 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 16:28:49 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,25 +81,32 @@ typedef struct s_oldjulia
 	void	(*old_fr)(t_mlx *, t_mlx, double, double);
 }	t_oldjulia;
 
-
+t_mlx		ft_init_tmlx(void);
+// Utils functions
+int			ft_isnumber(char c);
+int			ft_iscomma(char c);
 void		*ft_calloc(size_t nmemb, size_t size);
 int			ft_strcmp(char *s1, char *s2);
 double		ft_atof(char *str);
+// Key related function
 void		key_up(int key, void *param);
 void		key_down(int key, void *param);
-t_mlx		ft_init_tmlx(void);
-void		ft_cleaning_mlx(t_mlx *mlx);
-int			too_much_param(void);
-int			check_first_param(char *av1);
-void		fractol_choice(void	*param);
-void		julia(t_mlx *pmlx, t_mlx mlx, double x, double y);
-void		julia_def_param(t_julia *julia, double x, double y);
-void		mendelbrot(t_mlx *pmlx, t_mlx mlx, double x, double y);
 void		update_precision(t_mlx *mlx);
 void		update_moving(t_mlx *mlx);
 void		update_color(t_mlx *mlx);
 void		ft_zoom(int button, void *param);
+//Error management and parsing function
+void		ft_cleaning_mlx(t_mlx *mlx);
+int			display_param(void);
+int			check_julia_param(char *av2, char *av3);
+int			check_first_param(char *av1);
+int			fractol_param(char *av[], t_mlx *mlx);
+//Fractol related function
+void		fractol_choice(void	*param);
+void		julia(t_mlx *pmlx, t_mlx mlx, double x, double y);
+void		julia_def_param(t_julia *julia, double x, double y);
+void		mendelbrot(t_mlx *pmlx, t_mlx mlx, double x, double y);
+//Color related function
 void		color_switch(t_color *color, t_mlx *mlx, int choice);
-mlx_color	rainbow_color(t_mlx *mlx);
 mlx_color	color_change(t_mlx *mlx, int rgba);
 #endif

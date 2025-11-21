@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 05:36:10 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 11:13:08 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 16:28:32 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,4 @@ mlx_color	color_change(t_mlx *mlx, int rgba)
 	new_color.rgba = rgba;
 	mlx->is_rainbow = false;
 	return (new_color);
-}
-
-int	nb_of_zoom(double zoom)
-{
-	int	i;
-
-	i = 0;
-	while (zoom != 300.0)
-	{
-		zoom = zoom / 1.5;
-		i++;
-	}
-	return (i);
 }

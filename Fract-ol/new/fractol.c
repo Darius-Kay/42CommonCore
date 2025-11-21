@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:43:26 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 13:24:26 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/21 16:18:13 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	update_key(void *param)
 	update_color(mlx);
 }
 
-static void ft_loop(t_mlx mlx)
+static void	ft_loop(t_mlx mlx)
 {
 	mlx_on_event(mlx.mlx, mlx.win, MLX_WINDOW_EVENT, closing_window, &mlx);
 	mlx_on_event(mlx.mlx, mlx.win, MLX_MOUSEWHEEL, ft_zoom, &mlx);
@@ -66,7 +66,7 @@ int	main(int ac, char *av[])
 	t_mlx	mlx;
 
 	if (ac > 4)
-		return (too_much_param());
+		return (display_param());
 	mlx = ft_init_tmlx();
 	if (mlx.error == true)
 	{
@@ -74,8 +74,11 @@ int	main(int ac, char *av[])
 			ft_cleaning_mlx(&mlx);
 		return (-1);
 	}
-	if (check_first_param(av[1]))
-		return (too_much_param());
+	if (check_first_param(av[1]) || fractol_param(av, &mlx))
+	{
+		free(mlx.keytab);
+		return (display_param());
+	}
 	ft_loop(mlx);
 	return (0);
 }
