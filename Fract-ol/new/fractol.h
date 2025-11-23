@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:35:32 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/23 15:16:41 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/23 18:12:10 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FRACTOL_H
 # include "../MacroLibX/includes/mlx.h"
 # include "../MacroLibX/includes/mlx_extended.h"
-# include "kleinian.h"
 # include <stdlib.h>
 # include <math.h>
 # define BLACK 0x000000FF
@@ -66,7 +65,6 @@ typedef struct s_mlx
 	mlx_image				img;
 	t_coord					coord;
 	t_color					color;
-	t_kleinian				kleinian;
 	t_julia					julia;
 	mlx_window_create_info	info;
 	int						*keytab;
@@ -108,7 +106,7 @@ void		fractol_choice(void	*param);
 void		julia(t_mlx *pmlx, t_mlx mlx, double x, double y);
 void		julia_def_param(t_julia *julia, double x, double y);
 void		mendelbrot(t_mlx *pmlx, t_mlx mlx, double x, double y);
-void kleinian(t_mlx *pmlx, t_mlx mlx, double x, double y);
+void		balls(t_mlx *pmlx, t_mlx mlx, double x, double y);
 //Color related function
 void		color_switch(t_color *color, t_mlx *mlx, int choice);
 mlx_color	color_change(t_mlx *mlx, int rgba);
