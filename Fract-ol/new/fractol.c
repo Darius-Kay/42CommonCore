@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:43:26 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 16:18:13 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/23 14:43:13 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	ft_loop(t_mlx mlx)
 	mlx_on_event(mlx.mlx, mlx.win, MLX_KEYUP, key_up, &mlx);
 	mlx_add_loop_hook(mlx.mlx, update_key, &mlx);
 	mlx_add_loop_hook(mlx.mlx, update_paint, &mlx);
+	mlx_set_fps_goal(mlx.mlx, 60);
 	mlx_loop(mlx.mlx);
 	ft_cleaning_mlx(&mlx);
 	free(mlx.keytab);
@@ -77,6 +78,7 @@ int	main(int ac, char *av[])
 	if (check_first_param(av[1]) || fractol_param(av, &mlx))
 	{
 		free(mlx.keytab);
+		ft_cleaning_mlx(&mlx);
 		return (display_param());
 	}
 	ft_loop(mlx);

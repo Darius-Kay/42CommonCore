@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 04:24:56 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 16:27:45 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/23 15:22:29 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ void	fractol_choice(void	*param)
 		julia_def_param(&(mlx->julia), 0.355534, -0.337292);
 	if (mlx->keytab[KEY_FOUR])
 		julia_def_param(&(mlx->julia), mlx->julia.av_x, mlx->julia.av_y);
+	if (mlx->keytab[KEY_FIVE])
+	{
+		mlx->fr = kleinian;
+		mlx->coord.imax = 100;
+		mlx->coord.zoom = 50.0;
+		mlx->coord.offx = -2.0;
+		mlx->coord.offy = -2.0;
+	}
 	if ((old_julia.old_x != mlx->julia.julia_x)
 		|| (old_julia.old_y == mlx->julia.julia_y)
 		|| (old_julia.old_fr != mlx->fr))
