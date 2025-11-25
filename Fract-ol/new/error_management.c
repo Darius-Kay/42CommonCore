@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 05:28:04 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 16:23:36 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/25 12:06:05 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ int	display_param(void)
 {
 	write(1, "mandelbrot\n", 11);
 	write(1, "julia, (double)x, (double)y\n", 28);
+	write(1, "balls\n", 6);
 	return (-2);
 }
 
 int	check_first_param(char *av1)
 {
-	if ((ft_strcmp(av1, "mandelbrot")) && (ft_strcmp(av1, "julia")))
+	if ((ft_strcmp(av1, "mandelbrot")) && (ft_strcmp(av1, "julia"))
+		&& (ft_strcmp(av1, "balls")))
 		return (1);
 	else
 		return (0);

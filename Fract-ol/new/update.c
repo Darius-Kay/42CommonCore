@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 02:43:33 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/23 15:15:02 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/25 11:43:59 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,25 @@ void	update_moving(t_mlx *mlx)
 		mlx->update = true;
 }
 
+static void	reset(t_mlx *mlx)
+{
+	mlx->coord.zoom = 300.0;
+	mlx->coord.imax = 100;
+	mlx->coord.offx = -1.5;
+	mlx->coord.offy = -0.9;
+}
+
 void	update_precision(t_mlx *mlx)
 {
 	int		old_imax;
 
 	old_imax = mlx->coord.imax;
-	if (mlx->keytab[KEY_E])
+	if (mlx->keytab[KEY_PLUS])
 		mlx->coord.imax = mlx->coord.imax + 10;
-	if (mlx->keytab[KEY_R])
+	if (mlx->keytab[KEY_MINUS])
 		mlx->coord.imax = mlx->coord.imax - 10 * (mlx->coord.imax > 0);
+	if (mlx->keytab[KEY_R])
+		reset(mlx);
 	if (old_imax != mlx->coord.imax)
 		mlx->update = true;
 }

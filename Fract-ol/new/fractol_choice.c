@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 04:24:56 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/23 18:21:19 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/25 12:00:01 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	fractol_param(char *av[], t_mlx *mlx)
 {
 	if (!(ft_strcmp(av[1], "mandelbrot")))
 		return (0);
+	else if (!(ft_strcmp(av[1], "balls")))
+		mlx->fr = balls;
 	else if (!(ft_strcmp(av[1], "julia")))
 	{
 		mlx->fr = julia;

@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 03:58:25 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/21 16:32:46 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/25 11:33:50 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	mendelbrot(t_mlx *pmlx, t_mlx mlx, double x, double y)
 					-(y / (mlx.coord.zoom) + (mlx.coord.offy)), 0.0);
 			if (frac_calc == mlx.coord.imax)
 				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, mlx.color.inside);
-			else if (frac_calc <= 20)
+			else if (frac_calc <= 5)
 				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y, mlx.color.bg);
 			else
 				mlx_set_image_pixel(mlx.mlx, mlx.img, x, y,

@@ -6,7 +6,7 @@
 /*   By: dakaymak <dakaymak@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 15:11:45 by dakaymak          #+#    #+#             */
-/*   Updated: 2025/11/23 18:21:26 by dakaymak         ###   ########.fr       */
+/*   Updated: 2025/11/25 12:07:23 by dakaymak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	is_in_ball(t_mlx mlx, double c_r, double c_i)
 	while (i < mlx.coord.imax)
 	{
 		mag_sq = z_r * z_r + z_i * z_i;
-		if (mag_sq > 100.0)
+		if (mag_sq > 10.0)
 			break ;
 		if (mag_sq < 0.01)
 			return (i);
