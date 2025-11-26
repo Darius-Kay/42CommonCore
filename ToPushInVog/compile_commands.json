@@ -1,0 +1,158 @@
+[
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/init.o", "sources/utils/init.c"],
+	"file": "sources/utils/init.c",
+	"output": "sources/utils/init.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/color.o", "sources/utils/color.c"],
+	"file": "sources/utils/color.c",
+	"output": "sources/utils/color.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/ft_atof.o", "sources/utils/ft_atof.c"],
+	"file": "sources/utils/ft_atof.c",
+	"output": "sources/utils/ft_atof.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/ft_calloc.o", "sources/utils/ft_calloc.c"],
+	"file": "sources/utils/ft_calloc.c",
+	"output": "sources/utils/ft_calloc.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/fractol_utils.o", "sources/utils/fractol_utils.c"],
+	"file": "sources/utils/fractol_utils.c",
+	"output": "sources/utils/fractol_utils.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/error_management.o", "sources/utils/error_management.c"],
+	"file": "sources/utils/error_management.c",
+	"output": "sources/utils/error_management.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/key_management/update.o", "sources/key_management/update.c"],
+	"file": "sources/key_management/update.c",
+	"output": "sources/key_management/update.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/key_management/keystatus.o", "sources/key_management/keystatus.c"],
+	"file": "sources/key_management/keystatus.c",
+	"output": "sources/key_management/keystatus.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/fractols/balls.o", "sources/fractols/balls.c"],
+	"file": "sources/fractols/balls.c",
+	"output": "sources/fractols/balls.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/fractols/julia.o", "sources/fractols/julia.c"],
+	"file": "sources/fractols/julia.c",
+	"output": "sources/fractols/julia.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/fractols/mendelbrot.o", "sources/fractols/mendelbrot.c"],
+	"file": "sources/fractols/mendelbrot.c",
+	"output": "sources/fractols/mendelbrot.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/fractols/fractol.o", "sources/fractols/fractol.c"],
+	"file": "sources/fractols/fractol.c",
+	"output": "sources/fractols/fractol.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/fractols/fractol_choice.o", "sources/fractols/fractol_choice.c"],
+	"file": "sources/fractols/fractol_choice.c",
+	"output": "sources/fractols/fractol_choice.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/init.o", "sources/utils/init.c"],
+	"file": "sources/utils/init.c",
+	"output": "sources/utils/init.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/color.o", "sources/utils/color.c"],
+	"file": "sources/utils/color.c",
+	"output": "sources/utils/color.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/ft_atof.o", "sources/utils/ft_atof.c"],
+	"file": "sources/utils/ft_atof.c",
+	"output": "sources/utils/ft_atof.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/ft_calloc.o", "sources/utils/ft_calloc.c"],
+	"file": "sources/utils/ft_calloc.c",
+	"output": "sources/utils/ft_calloc.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/fractol_utils.o", "sources/utils/fractol_utils.c"],
+	"file": "sources/utils/fractol_utils.c",
+	"output": "sources/utils/fractol_utils.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/utils/error_management.o", "sources/utils/error_management.c"],
+	"file": "sources/utils/error_management.c",
+	"output": "sources/utils/error_management.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/key_management/update.o", "sources/key_management/update.c"],
+	"file": "sources/key_management/update.c",
+	"output": "sources/key_management/update.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/key_management/keystatus.o", "sources/key_management/keystatus.c"],
+	"file": "sources/key_management/keystatus.c",
+	"output": "sources/key_management/keystatus.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/fractols/balls.o", "sources/fractols/balls.c"],
+	"file": "sources/fractols/balls.c",
+	"output": "sources/fractols/balls.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/fractols/julia.o", "sources/fractols/julia.c"],
+	"file": "sources/fractols/julia.c",
+	"output": "sources/fractols/julia.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/fractols/mendelbrot.o", "sources/fractols/mendelbrot.c"],
+	"file": "sources/fractols/mendelbrot.c",
+	"output": "sources/fractols/mendelbrot.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/fractols/fractol.o", "sources/fractols/fractol.c"],
+	"file": "sources/fractols/fractol.c",
+	"output": "sources/fractols/fractol.o"
+},
+{
+	"directory": "/home/dakaymak/42/Fract-ol",
+	"arguments": ["cc", "-Wall", "-Wextra", "-Werror", "-Iincludes", "-c", "-o", "sources/fractols/fractol_choice.o", "sources/fractols/fractol_choice.c"],
+	"file": "sources/fractols/fractol_choice.c",
+	"output": "sources/fractols/fractol_choice.o"
+}
+]
